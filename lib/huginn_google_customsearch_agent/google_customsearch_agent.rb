@@ -146,7 +146,8 @@ module Agents
         if payload.to_s != memory['last_status']
           if "#{memory['last_status']}" == ''
             payload['items'].each do |item|
-              create_event payload: item
+              base['items'] = item
+              create_event payload: base
             end
           else
             last_status = memory['last_status'].gsub("=>", ": ").gsub(": nil,", ": null,")
