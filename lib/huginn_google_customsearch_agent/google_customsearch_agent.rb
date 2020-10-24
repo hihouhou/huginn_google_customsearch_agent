@@ -144,35 +144,37 @@ module Agents
 
       if interpolated['changes_only'] == 'true'
         if payload.to_s != memory['last_status']
-          if "#{memory['last_status']}" == ''
-            payload['items'].each do |item|
-              base['items'] = item
-              create_event payload: base
-            end
-          else
-            last_status = memory['last_status'].gsub("=>", ": ").gsub(": nil,", ": null,")
-            last_status = JSON.parse(last_status)
-            payload['items'].each do |item|
-              found = false
-              if interpolated['debug'] == 'true'
-                log "found is #{found}!"
-                log item
+          if payload['items']
+            if "#{memory['last_status']}" == ''
+              payload['items'].each do |item|
+                base['items'] = item
+                create_event payload: base
               end
-              last_status['items'].each do |itembis|
-                if item == itembis
-                  found = true
-                end
+            else
+              last_status = memory['last_status'].gsub("=>", ": ").gsub(": nil,", ": null,")
+              last_status = JSON.parse(last_status)
+              payload['items'].each do |item|
+                found = false
                 if interpolated['debug'] == 'true'
                   log "found is #{found}!"
-                end
-              end
-              if found == false
-                base['items'] = item
-                if interpolated['debug'] == 'true'
-                  log "found is #{found}! so event created"
                   log item
                 end
-                create_event payload: base
+                last_status['items'].each do |itembis|
+                  if item == itembis
+                    found = true
+                  end
+                  if interpolated['debug'] == 'true'
+                    log "found is #{found}!"
+                  end
+                end
+                if found == false
+                  base['items'] = item
+                  if interpolated['debug'] == 'true'
+                    log "found is #{found}! so event created"
+                    log item
+                  end
+                  create_event payload: base
+                end
               end
             end
           end
