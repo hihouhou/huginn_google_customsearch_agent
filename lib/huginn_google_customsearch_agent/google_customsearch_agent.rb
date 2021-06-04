@@ -153,27 +153,35 @@ module Agents
             else
               last_status = memory['last_status'].gsub("=>", ": ").gsub(": nil,", ": null,")
               last_status = JSON.parse(last_status)
-              payload['items'].each do |item|
-                found = false
-                if interpolated['debug'] == 'true'
-                  log "found is #{found}!"
-                  log item
-                end
-                last_status['items'].each do |itembis|
-                  if item == itembis
-                    found = true
+              if !payload['items'].nil?
+                if !payload['items'].empty?
+                  payload['items'].each do |item|
+                    found = false
+                    if interpolated['debug'] == 'true'
+                      log "found is #{found}!"
+                      log item
+                    end
+                    if !last_status['items'].nil?
+                      if !last_status['items'].empty?
+                        last_status['items'].each do |itembis|
+                          if item == itembis
+                            found = true
+                          end
+                          if interpolated['debug'] == 'true'
+                            log "found is #{found}!"
+                          end
+                        end
+                      end
+                    end
+                    if found == false
+                      base['items'] = item
+                      if interpolated['debug'] == 'true'
+                        log "found is #{found}! so event created"
+                        log item
+                      end
+                      create_event payload: base
+                    end
                   end
-                  if interpolated['debug'] == 'true'
-                    log "found is #{found}!"
-                  end
-                end
-                if found == false
-                  base['items'] = item
-                  if interpolated['debug'] == 'true'
-                    log "found is #{found}! so event created"
-                    log item
-                  end
-                  create_event payload: base
                 end
               end
             end
