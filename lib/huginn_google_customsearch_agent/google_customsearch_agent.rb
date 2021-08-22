@@ -24,55 +24,56 @@ module Agents
 
     event_description <<-MD
       Events look like this:
-        {
-          "kind": "customsearch#search",
-          "url": {
-            "type": "application/json",
-            "template": "https://www.googleapis.com/customsearch/v1?q={searchTerms}&num={count?}&start={startIndex?}&lr={language?}&safe={safe?}&cx={cx?}&sort={sort?}&filter={filter?}&gl={gl?}&cr={cr?}&googlehost={googleHost?}&c2coff={disableCnTwTranslation?}&hq={hq?}&hl={hl?}&siteSearch={siteSearch?}&siteSearchFilter={siteSearchFilter?}&exactTerms={exactTerms?}&excludeTerms={excludeTerms?}&linkSite={linkSite?}&orTerms={orTerms?}&relatedSite={relatedSite?}&dateRestrict={dateRestrict?}&lowRange={lowRange?}&highRange={highRange?}&searchType={searchType}&fileType={fileType?}&rights={rights?}&imgSize={imgSize?}&imgType={imgType?}&imgColorType={imgColorType?}&imgDominantColor={imgDominantColor?}&alt=json"
-          },
-          "queries": {
-            "request": [
+
+          {
+            "kind": "customsearch#search",
+            "url": {
+              "type": "application/json",
+              "template": "https://www.googleapis.com/customsearch/v1?q={searchTerms}&num={count?}&start={startIndex?}&lr={language?}&safe={safe?}&cx={cx?}&sort={sort?}&filter={filter?}&gl={gl?}&cr={cr?}&googlehost={googleHost?}&c2coff={disableCnTwTranslation?}&hq={hq?}&hl={hl?}&siteSearch={siteSearch?}&siteSearchFilter={siteSearchFilter?}&exactTerms={exactTerms?}&excludeTerms={excludeTerms?}&linkSite={linkSite?}&orTerms={orTerms?}&relatedSite={relatedSite?}&dateRestrict={dateRestrict?}&lowRange={lowRange?}&highRange={highRange?}&searchType={searchType}&fileType={fileType?}&rights={rights?}&imgSize={imgSize?}&imgType={imgType?}&imgColorType={imgColorType?}&imgDominantColor={imgDominantColor?}&alt=json"
+            },
+            "queries": {
+              "request": [
+                {
+                  "title": "Google Custom Search - XXXXXXXX",
+                  "totalResults": "6",
+                  "searchTerms": "XXXXXXXX",
+                  "count": 6,
+                  "startIndex": 1,
+                  "inputEncoding": "utf8",
+                  "outputEncoding": "utf8",
+                  "safe": "off",
+                  "cx": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+                }
+              ]
+            },
+            "context": {
+              "title": "XXXXXX"
+            },
+            "searchInformation": {
+              "searchTime": 0.373951,
+              "formattedSearchTime": "0.37",
+              "totalResults": "6",
+              "formattedTotalResults": "6"
+            },
+            "spelling": {
+              "correctedQuery": "XXXXXXXX",
+              "htmlCorrectedQuery": "<b><i>XXXXXXXX</i></b>"
+            },
+            "items": [
               {
-                "title": "Google Custom Search - XXXXXXXX",
-                "totalResults": "6",
-                "searchTerms": "XXXXXXXX",
-                "count": 6,
-                "startIndex": 1,
-                "inputEncoding": "utf8",
-                "outputEncoding": "utf8",
-                "safe": "off",
-                "cx": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+                "kind": "customsearch#result",
+                "title": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+                "htmlTitle": "XXXXXXXXXXXXXXXXXXXXXXXX</b> - XXXXXX",
+                "link": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+                "displayLink": "XXXXXXXXXXXXXX",
+                "snippet": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+                "htmlSnippet": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+                "cacheId": "XXXXXXXXXXXX",
+                "formattedUrl": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+                "htmlFormattedUrl": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
               }
             ]
-          },
-          "context": {
-            "title": "XXXXXX"
-          },
-          "searchInformation": {
-            "searchTime": 0.373951,
-            "formattedSearchTime": "0.37",
-            "totalResults": "6",
-            "formattedTotalResults": "6"
-          },
-          "spelling": {
-            "correctedQuery": "XXXXXXXX",
-            "htmlCorrectedQuery": "<b><i>XXXXXXXX</i></b>"
-          },
-          "items": [
-            {
-              "kind": "customsearch#result",
-              "title": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
-              "htmlTitle": "XXXXXXXXXXXXXXXXXXXXXXXX</b> - XXXXXX",
-              "link": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
-              "displayLink": "XXXXXXXXXXXXXX",
-              "snippet": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
-              "htmlSnippet": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
-              "cacheId": "XXXXXXXXXXXX",
-              "formattedUrl": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
-              "htmlFormattedUrl": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
-            }
-          ]
-        }
+          }
     MD
 
     def default_options
