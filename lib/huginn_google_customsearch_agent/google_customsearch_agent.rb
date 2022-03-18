@@ -3,7 +3,7 @@ module Agents
     include FormConfigurable
     can_dry_run!
     no_bulk_receive!
-    default_schedule '1h'
+    default_schedule 'every_1h'
 
     description do
       <<-MD
@@ -165,7 +165,7 @@ module Agents
                     if !last_status['items'].nil?
                       if !last_status['items'].empty?
                         last_status['items'].each do |itembis|
-                          if item == itembis
+                          if item == itembis || item['link'] == itembis['link']
                             found = true
                           end
                           if interpolated['debug'] == 'true'
